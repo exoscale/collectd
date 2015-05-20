@@ -1073,14 +1073,12 @@ collectd_DEPENDENCIES += sigrok.la
 endif
 
 if BUILD_PLUGIN_SMART
-if BUILD_WITH_LIBUDEV
 pkglib_LTLIBRARIES += smart.la
 smart_la_SOURCES = smart.c \
 		   utils_ignorelist.c utils_ignorelist.h
 smart_la_CFLAGS = $(AM_CFLAGS) $(BUILD_WITH_LIBATASMART_CPPFLAGS)
 smart_la_LDFLAGS = $(PLUGIN_LDFLAGS) $(BUILD_WITH_LIBATASMART_LDFLAGS)
 smart_la_LIBADD = $(BUILD_WITH_LIBATASMART_LIBS) -ludev
-endif
 endif
 
 if BUILD_PLUGIN_SNMP
