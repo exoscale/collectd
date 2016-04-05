@@ -5092,6 +5092,10 @@ PKG_CHECK_MODULES([LIBNOTIFY], [libnotify],
 			 with_libnotify="no ($LIBNOTIFY_PKG_ERRORS)"
 		 fi])
 
+PKG_CHECK_MODULES([RIEMANN_C], [riemann-client >= 1.5.0],
+ [with_riemann_c="yes"],
+ [with_riemann_c="no (pbg-config doesn't know riemann-c-client)"])
+
 # Check for enabled/disabled features
 #
 
@@ -5727,7 +5731,7 @@ AC_PLUGIN([write_kafka],  [$with_librdkafka],  [Kafka output plugin])
 AC_PLUGIN([write_log], [yes],                  [Log output plugin])
 AC_PLUGIN([write_mongodb], [$with_libmongoc],  [MongoDB output plugin])
 AC_PLUGIN([write_redis], [$with_libhiredis],    [Redis output plugin])
-AC_PLUGIN([write_riemann], [$have_protoc_c],   [Riemann output plugin])
+AC_PLUGIN([write_riemann], [$with_riemann_c],   [Riemann output plugin])
 AC_PLUGIN([write_sensu], [yes],                [Sensu output plugin])
 AC_PLUGIN([write_tsdb],  [yes],                [TSDB output plugin])
 AC_PLUGIN([xmms],        [$with_libxmms],      [XMMS statistics])
@@ -5967,6 +5971,7 @@ Configuration:
     oracle  . . . . . . . $with_oracle
     protobuf-c  . . . . . $have_protoc_c
     python  . . . . . . . $with_python
+    riemann-c-client  . . $with_riemann_c
 
   Features:
     daemon mode . . . . . $enable_daemon
