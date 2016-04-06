@@ -5092,7 +5092,7 @@ PKG_CHECK_MODULES([LIBNOTIFY], [libnotify],
 			 with_libnotify="no ($LIBNOTIFY_PKG_ERRORS)"
 		 fi])
 
-PKG_CHECK_MODULES([RIEMANN_C], [riemann-client >= 1.5.0],
+PKG_CHECK_MODULES([RIEMANN_C], [riemann-client >= 1.6.0],
  [with_riemann_c="yes"],
  [with_riemann_c="no (pbg-config doesn't know riemann-c-client)"])
 
